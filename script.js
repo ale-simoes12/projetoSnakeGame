@@ -63,6 +63,12 @@ function gerarCordenada() {
 }
 
 
+function desenhaComida() {
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(xComida, yComida, tamanho, tamanho);
+}
+
+
 
 
 document.addEventListener("keydown", function (event) {
