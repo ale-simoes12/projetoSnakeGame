@@ -1,5 +1,8 @@
 const canvas = document.getElementById("canvasJogo");
 const derrota = document.getElementById("losescreean");
+let pontosjogador = document.getElementById("pontoJogador");
+let melhorScore = document.getElementById("melhorPontuacao");
+
 const ctx = canvas.getContext("2d");
 const tamanho = 50;
 let listaPosicoes = [{ x: 250, y: 250 }];
@@ -12,6 +15,8 @@ let xComida;
 let yComida;
 let loopId;
 let perdeu = false;
+let pontos = 0;
+let melhorpontuacao = 0;
 
 function desenharCobra() {
     ctx.fillStyle = "red";
@@ -77,6 +82,10 @@ function verificaComeu() {
     const ultimoElemento = listaPosicoes[tamanhoCobra - 1]
     if (ultimoElemento.x == xComida && ultimoElemento.y == yComida) {
         gerarCordenada();
+        // pontosjogador
+        pontos +=1;
+        pontosjogador.innerText = ""+pontos;
+
         comeu = true;
     }
 }
@@ -146,6 +155,11 @@ document.addEventListener("keydown", function (event) {
 gerarCordenada();
 function gameLoop() {
     if(perdeu == true){
+        if(pontos> melhorpontuacao){
+            melhorpontuacao = pontos;
+            melhorScore.innerText = ""+melhorpontuacao;
+
+        }
         telaDerrota();
         return;
     }
@@ -179,6 +193,8 @@ function restart(){
     yComida;
     loopId;
     perdeu = false;
+    pontos = 0;
+    pontosjogador.innerText = ""+0;
     gerarCordenada();
     gameLoop();
 

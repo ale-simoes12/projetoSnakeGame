@@ -18,7 +18,7 @@ canvas {
     background-color: black;
 }
 
-.telaDerrota{
+.telaDerrota {
     display: none;
     position: absolute;
     background-color: palevioletred;
@@ -27,22 +27,28 @@ canvas {
     gap: 1em;
 }
 
-.mensagemderrota{
+.mensagemderrota {
     font-size: 50px;
 }
 
-.pontuacao{
+.pontuacao {
     display: flex;
+    justify-content: space-around;
+    width: 500px;
     gap: 2em;
-    justify-content: center;
 }
 
-.textopontuacoa{
+.pontaucaoAtual{
+    display: flex;
+    gap: 2em;
+}
+
+.textopontuacoa {
     font-size: 2em;
 }
-.botao{
+
+.botao {
     padding-top: 1em;
     display: flex;
     justify-content: center;
 }
-

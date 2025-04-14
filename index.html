@@ -11,9 +11,17 @@
     <title>Snake Game</title>
 </head>
 <body>
+    <div class="pontuacao" >  
+        <div class="pontaucaoAtual"> <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" id="pontoJogador" >0</p>
+        </div>
+        <div class="pontaucaoAtual"> <p class="textopontuacoa" >Best Score:</p><p class="textopontuacoa" id="melhorPontuacao" >0</p>
+        </div>
+
+
+    </div>
     <div class="telaDerrota" id="losescreean" >
         <p class="mensagemderrota">Voce Perdeu!</p>
-        <div class="pontuacao" > <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" >0</p></div>
+        <div class="pontuacao" > <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" id="pontoJogador" >0</p></div>
         <div class="botao"><button class="reniciar" onclick="restart()"><p>Reniar Jogo</p> </button></div>
     </div>
     <canvas id="canvasJogo" width="550" height="550"></canvas>
