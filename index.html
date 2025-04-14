@@ -5,13 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="./css/style.css">
+   
     
     <title>Snake Game</title>
 </head>
 <body>
-    <canvas width="550" height="550"></canvas>
+    <div id="tela-inicial">
+        <h1>Bem-vindo ao Jogo!</h1>
+        <img src="cobraimg/imagesnake.png" alt="Cobra Demoníaca" id="imagem-cobra">
+        <button  id="botao-start"  onclick="startgame()" >Start</button>
+      </div>
+    <div class="pontuacao" >  
+        <div class="pontaucaoAtual"> <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" id="pontoJogador" >0</p>
+        </div>
+        <div class="pontaucaoAtual"> <p class="textopontuacoa" >Best Score:</p><p class="textopontuacoa" id="melhorPontuacao" >0</p>
+        </div>
+
+
+    </div>
+    <div class="telaDerrota" id="losescreean" >
+        <p class="mensagemderrota">Voce Perdeu!</p>
+        <div class="pontuacaoteladerrota" > <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" id="pontoJogadorAtual" >0</p></div>
+        <div class="botao"><button class="reniciar" onclick="restart()"><p>Reniar Jogo</p> </button></div>
+    </div>
+    <canvas id="canvasJogo" width="800" height="800"></canvas>
+    <div class="botoesVelocidade">
+        <button onclick="velocit(2)" >0.5x</button>
+        <button onclick="velocit(1)">1x</button>
+        <button  onclick="velocit(0.5)">2x</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

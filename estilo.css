@@ -17,3 +17,70 @@ body {
 canvas {
     background-color: black;
 }
+
+.telaDerrota {
+    display: none;
+    position: absolute;
+    background-color: palevioletred;
+    padding: 2em;
+    border-radius: 10px;
+    gap: 1em;
+}
+
+.mensagemderrota {
+    font-size: 50px;
+}
+
+.pontuacao {
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    gap: 2em;
+}
+
+.pontaucaoAtual{
+    display: flex;
+    gap: 2em;
+}
+
+.pontuacaoteladerrota{
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+}
+
+.textopontuacoa {
+    font-size: 2em;
+}
+
+.botao {
+    padding-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+
+#tela-inicial {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #botao-start {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  #imagem-cobra {
+    width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+  }
