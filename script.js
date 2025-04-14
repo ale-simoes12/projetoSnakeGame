@@ -5,9 +5,8 @@ let melhorScore = document.getElementById("melhorPontuacao");
 let pontoJogadorAtual  = document.getElementById("pontoJogadorAtual");
 
 const ctx = canvas.getContext("2d");
-const tamanho = 50;
-let listaPosicoes = [{ x: 250, y: 250 }];
-ctx.fillRect(listaPosicoes[0].x, listaPosicoes[0].y, tamanho, tamanho);
+const tamanho = 40;
+let listaPosicoes = [{ x: 400, y: 400 }];
 let ultimaTecla = "";
 let horizontal = 0;
 let vertical = 0;
@@ -48,7 +47,7 @@ function desenharCobra() {
         if (i == tam - 1) {
             ctx.fillStyle = "blue";
         }
-        ctx.fillRect(listaPosicoes[i].x, listaPosicoes[i].y, tamanho, tamanho);
+        ctx.fillRect(listaPosicoes[i].x, listaPosicoes[i].y, tamanho-2, tamanho-2);
     }
 
 }
@@ -60,7 +59,7 @@ function gerarAleatorio(min, max) {
 
 
 function gerarPosicao() {
-    return Math.round(gerarAleatorio(0, 500) / 50) * 50;
+    return Math.round(gerarAleatorio(0, 800) / 40) * 40;
 }
 
 
@@ -108,10 +107,10 @@ function verificarDerrotaCampo(){
     let tamanhoCobra = listaPosicoes.length;
     const ultimoElemento = listaPosicoes[tamanhoCobra - 1];
     console.log(canvas.width);
-    if(ultimoElemento.x == canvas.width || ultimoElemento.x == 0){
+    if(ultimoElemento.x == canvas.width || ultimoElemento.x == -40){
         perdeu = true;
     }
-    if(ultimoElemento.y== canvas.height || ultimoElemento.y == 0){
+    if(ultimoElemento.y== canvas.height || ultimoElemento.y == -40){
         perdeu = true;
     }
       
@@ -180,7 +179,7 @@ function gameLoop() {
         telaDerrota();
         return;
     }
-    ctx.clearRect(0, 0, 550, 550)
+    ctx.clearRect(0, 0, 800, 800)
     verificaComeu();
     desenharCobra();
     desenhaComida();
@@ -196,12 +195,19 @@ function telaDerrota(){
     derrota.style.display = "block";
 }
 
+
+function startgame(){
+    const startgame =  document.getElementById("tela-inicial");
+    startgame.style.display = "none";
+
+}
+
 function restart(){
-    ctx.clearRect(0, 0, 550, 550);
+    ctx.clearRect(0, 0, 800, 800);
     derrota.style.display = "none";
     perdeu = false;
-    listaPosicoes = [{ x: 250, y: 250 }];
-    ctx.fillRect(listaPosicoes[0].x, listaPosicoes[0].y, tamanho, tamanho);
+    listaPosicoes = [{ x: 400, y: 400 }];
+    // ctx.fillRect(listaPosicoes[0].x, listaPosicoes[0].y, tamanho, tamanho);
     ultimaTecla = "";
     horizontal = 0;
     vertical = 0;

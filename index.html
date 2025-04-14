@@ -10,6 +10,11 @@
     <title>Snake Game</title>
 </head>
 <body>
+    <div id="tela-inicial">
+        <h1>Bem-vindo ao Jogo!</h1>
+        <img src="cobraimg/imagesnake.png" alt="Cobra Demoníaca" id="imagem-cobra">
+        <button  id="botao-start"  onclick="startgame()" >Start</button>
+      </div>
     <div class="pontuacao" >  
         <div class="pontaucaoAtual"> <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" id="pontoJogador" >0</p>
         </div>
@@ -20,10 +25,10 @@
     </div>
     <div class="telaDerrota" id="losescreean" >
         <p class="mensagemderrota">Voce Perdeu!</p>
-        <div class="pontuacao" > <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" id="pontoJogadorAtual" >0</p></div>
+        <div class="pontuacaoteladerrota" > <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" id="pontoJogadorAtual" >0</p></div>
         <div class="botao"><button class="reniciar" onclick="restart()"><p>Reniar Jogo</p> </button></div>
     </div>
-    <canvas id="canvasJogo" width="550" height="550"></canvas>
+    <canvas id="canvasJogo" width="800" height="800"></canvas>
     <div class="botoesVelocidade">
         <button onclick="velocit(2)" >0.5x</button>
         <button onclick="velocit(1)">1x</button>
