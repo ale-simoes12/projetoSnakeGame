@@ -7,7 +7,28 @@ let ultimaTecla = "";
 let horizontal = 0;
 let vertical = 0;
 
+function desenharCobra() {
+    ctx.fillStyle = "red";
+    let tamanhoCobra = listaPosicoes.length;
+    const ultimoElemento = listaPosicoes[tamanhoCobra - 1]
+    let novox = ultimoElemento.x + horizontal;
+    let novoy = ultimoElemento.y + vertical;
+    let novoElemento = { x: novox, y: novoy };
+    if (comeu == false) {
+        listaPosicoes.shift();
+    }
+    listaPosicoes.push(novoElemento);
+    comeu = false;
 
+    let tam = listaPosicoes.length;
+    for (let i = 0; i < tam; i++) {
+        if (i == tam - 1) {
+            ctx.fillStyle = "blue";
+        }
+        ctx.fillRect(listaPosicoes[i].x, listaPosicoes[i].y, tamanho, tamanho);
+    }
+
+}
 
 document.addEventListener("keydown", function (event) {
 
