@@ -6,6 +6,7 @@ ctx.fillRect(listaPosicoes[0].x, listaPosicoes[0].y, tamanho, tamanho);
 let ultimaTecla = "";
 let horizontal = 0;
 let vertical = 0;
+let comeu = false;
 
 function desenharCobra() {
     ctx.fillStyle = "red";
@@ -29,6 +30,17 @@ function desenharCobra() {
     }
 
 }
+
+
+function gerarAleatorio(min, max) {
+    return Math.round(Math.random() * (max - min) + min)
+}
+
+
+function gerarPosicao() {
+    return Math.round(gerarAleatorio(0, 500) / 50) * 50;
+}
+
 
 document.addEventListener("keydown", function (event) {
 
