@@ -2,6 +2,7 @@ const canvas = document.getElementById("canvasJogo");
 const derrota = document.getElementById("losescreean");
 let pontosjogador = document.getElementById("pontoJogador");
 let melhorScore = document.getElementById("melhorPontuacao");
+let pontoJogadorAtual  = document.getElementById("pontoJogadorAtual");
 
 const ctx = canvas.getContext("2d");
 const tamanho = 50;
@@ -16,6 +17,7 @@ let yComida;
 let loopId;
 let perdeu = false;
 let pontos = 0;
+let velocidade =1;
 
 let melhorpontuacao =  localStorage.getItem("melhorPonto");
 if (melhorpontuacao == null) {
@@ -128,6 +130,10 @@ function verificarDerrotaCorpo(){
 
 }
 
+function  velocit(valor){
+    console.log("entrou velo");
+    velocidade = valor;
+}
 document.addEventListener("keydown", function (event) {
 
     if (event.key == "ArrowDown" && ultimaTecla != "ArrowUp") {
@@ -169,8 +175,8 @@ function gameLoop() {
             melhorpontuacao = pontos;
             localStorage.setItem('melhorPonto', melhorpontuacao);
             melhorScore.innerText = ""+melhorpontuacao;
-
         }
+        pontoJogadorAtual.innerText = ""+pontos;
         telaDerrota();
         return;
     }
@@ -183,7 +189,7 @@ function gameLoop() {
     
     loopId = setTimeout(() => {
         gameLoop()
-    }, 300)
+    }, 300*velocidade)
 
 }
 function telaDerrota(){
