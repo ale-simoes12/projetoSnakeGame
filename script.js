@@ -69,7 +69,14 @@ function desenhaComida() {
 }
 
 
-
+function verificaComeu() {
+    let tamanhoCobra = listaPosicoes.length;
+    const ultimoElemento = listaPosicoes[tamanhoCobra - 1]
+    if (ultimoElemento.x == xComida && ultimoElemento.y == yComida) {
+        gerarCordenada();
+        comeu = true;
+    }
+}
 
 document.addEventListener("keydown", function (event) {
 
