@@ -16,7 +16,17 @@ let yComida;
 let loopId;
 let perdeu = false;
 let pontos = 0;
-let melhorpontuacao = 0;
+
+let melhorpontuacao =  localStorage.getItem("melhorPonto");
+if (melhorpontuacao == null) {
+    melhorpontuacao = 0;
+
+}
+
+melhorScore.innerText = ""+melhorpontuacao;
+
+localStorage.setItem('melhorPonto', melhorpontuacao);
+
 
 function desenharCobra() {
     ctx.fillStyle = "red";
@@ -157,6 +167,7 @@ function gameLoop() {
     if(perdeu == true){
         if(pontos> melhorpontuacao){
             melhorpontuacao = pontos;
+            localStorage.setItem('melhorPonto', melhorpontuacao);
             melhorScore.innerText = ""+melhorpontuacao;
 
         }
