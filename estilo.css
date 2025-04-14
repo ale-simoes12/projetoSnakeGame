@@ -17,3 +17,32 @@ body {
 canvas {
     background-color: black;
 }
+
+.telaDerrota{
+    display: none;
+    position: absolute;
+    background-color: palevioletred;
+    padding: 2em;
+    border-radius: 10px;
+    gap: 1em;
+}
+
+.mensagemderrota{
+    font-size: 50px;
+}
+
+.pontuacao{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+
+.textopontuacoa{
+    font-size: 2em;
+}
+.botao{
+    padding-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+

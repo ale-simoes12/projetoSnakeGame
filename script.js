@@ -1,4 +1,5 @@
 const canvas = document.getElementById("canvasJogo");
+const derrota = document.getElementById("losescreean");
 const ctx = canvas.getContext("2d");
 const tamanho = 50;
 let listaPosicoes = [{ x: 250, y: 250 }];
@@ -144,20 +145,43 @@ document.addEventListener("keydown", function (event) {
 
 gerarCordenada();
 function gameLoop() {
+    if(perdeu == true){
+        telaDerrota();
+        return;
+    }
     ctx.clearRect(0, 0, 550, 550)
     verificaComeu();
     desenharCobra();
     desenhaComida();
     verificarDerrotaCorpo();
     verificarDerrotaCampo();
-    if(perdeu == true){
-        return;
-    }
+    
     loopId = setTimeout(() => {
         gameLoop()
     }, 300)
 
 }
+function telaDerrota(){
+    derrota.style.display = "block";
+}
 
+function restart(){
+    ctx.clearRect(0, 0, 550, 550);
+    derrota.style.display = "none";
+    perdeu = false;
+    listaPosicoes = [{ x: 250, y: 250 }];
+    ctx.fillRect(listaPosicoes[0].x, listaPosicoes[0].y, tamanho, tamanho);
+    ultimaTecla = "";
+    horizontal = 0;
+    vertical = 0;
+    comeu = false;
+    xComida;
+    yComida;
+    loopId;
+    perdeu = false;
+    gerarCordenada();
+    gameLoop();
+
+}
 
 gameLoop();
