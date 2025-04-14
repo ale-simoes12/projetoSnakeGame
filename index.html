@@ -11,7 +11,12 @@
     <title>Snake Game</title>
 </head>
 <body>
-    <canvas width="550" height="550"></canvas>
+    <div class="telaDerrota">
+        <p class="mensagemderrota">Voce Perdeu!</p>
+        <div> <p>Score:</p><p>0</p></div>
+        <button class="reniciar" onclick="renicarJogo"><p>Reniar Jogo</p> </button>
+    </div>
+    <canvas id="canvasJogo" width="550" height="550"></canvas>
     <script src="script.js"></script>
 </body>
 </html>

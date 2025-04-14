@@ -9,6 +9,8 @@ let vertical = 0;
 let comeu = false;
 let xComida;
 let yComida;
+let loopId;
+let perdeu = false;
 
 function desenharCobra() {
     ctx.fillStyle = "red";
@@ -78,6 +80,34 @@ function verificaComeu() {
     }
 }
 
+
+
+function verificarDerrotaCampo(){
+    let tamanhoCobra = listaPosicoes.length;
+    const ultimoElemento = listaPosicoes[tamanhoCobra - 1];
+    console.log(canvas.width);
+    if(ultimoElemento.x == canvas.width || ultimoElemento.x == 0){
+        perdeu = true;
+    }
+    if(ultimoElemento.y== canvas.height || ultimoElemento.y == 0){
+        perdeu = true;
+    }
+      
+}
+
+
+function verificarDerrotaCorpo(){
+    let tamanhoCorpo = listaPosicoes.length-1;
+     console.log("tamanho corpo" , tamanhoCorpo);
+    const ultimoElemento = listaPosicoes[tamanhoCorpo];
+    for(let i = 0;i<tamanhoCorpo;i++){
+        if(ultimoElemento.x == listaPosicoes[i].x && ultimoElemento.y == listaPosicoes[i].y  ){
+            perdeu = true;
+        }
+    }
+
+}
+
 document.addEventListener("keydown", function (event) {
 
     if (event.key == "ArrowDown" && ultimaTecla != "ArrowUp") {
@@ -87,7 +117,7 @@ document.addEventListener("keydown", function (event) {
 
     }
 
-    if (event.key == "ArrowUp" && ultimaTecla != "ArrowDown" ) {
+    if (event.key == "ArrowUp" && ultimaTecla != "ArrowDown") {
         ultimaTecla = "ArrowUp";
         horizontal = 0;
         vertical = -tamanho;
@@ -95,20 +125,39 @@ document.addEventListener("keydown", function (event) {
 
 
 
-    if (event.key == "ArrowRight"  && ultimaTecla != "ArrowLeft" ) {
-        //desenharCobra(tamanho,0);
-        ultimaTecla = "ArrowRight" 
+    if (event.key == "ArrowRight" && ultimaTecla != "ArrowLeft") {
+        ultimaTecla = "ArrowRight"
         horizontal = tamanho;
         vertical = 0;
 
     }
 
 
-    if (event.key == "ArrowLeft" && ultimaTecla != "ArrowRight" ) {
-        //desenharCobra(-tamanho,0);
-        ultimaTecla = "ArrowLeft" 
+    if (event.key == "ArrowLeft" && ultimaTecla != "ArrowRight") {
+        ultimaTecla = "ArrowLeft"
         horizontal = -tamanho;
         vertical = 0;
     }
 
 });
+
+
+gerarCordenada();
+function gameLoop() {
+    ctx.clearRect(0, 0, 550, 550)
+    verificaComeu();
+    desenharCobra();
+    desenhaComida();
+    verificarDerrotaCorpo();
+    verificarDerrotaCampo();
+    if(perdeu == true){
+        return;
+    }
+    loopId = setTimeout(() => {
+        gameLoop()
+    }, 300)
+
+}
+
+
+gameLoop();
