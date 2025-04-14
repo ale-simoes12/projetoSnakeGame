@@ -7,6 +7,8 @@ let ultimaTecla = "";
 let horizontal = 0;
 let vertical = 0;
 let comeu = false;
+let xComida;
+let yComida;
 
 function desenharCobra() {
     ctx.fillStyle = "red";
@@ -40,6 +42,27 @@ function gerarAleatorio(min, max) {
 function gerarPosicao() {
     return Math.round(gerarAleatorio(0, 500) / 50) * 50;
 }
+
+
+function gerarCordenada() {
+    let coordenadaValida = false;
+
+    while (!coordenadaValida) {
+        xComida = gerarPosicao();
+        yComida = gerarPosicao();
+
+        coordenadaValida = true;
+
+        for (var i = 0; i < listaPosicoes.length; i++) {
+            if (listaPosicoes[i].x === xComida && listaPosicoes[i].y === yComida) {
+                coordenadaValida = false;
+                break;
+            }
+        }
+    }
+}
+
+
 
 
 document.addEventListener("keydown", function (event) {
