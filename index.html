@@ -12,9 +12,24 @@
 <body>
     <div id="tela-inicial">
         <h1>Bem-vindo ao Jogo!</h1>
-        <img src="imagens/imagemCobra.png" alt="Cobra Demoníaca" id="imagem-cobra">
-        <button  id="botao-start"  onclick="startgame()" >Start</button>
+        <img src="imagens/imagemCobra.png" alt="Cobra pintada" id="imagem-cobra">
+        <div class="botoes-start">
+            <button  id="botao-start"  onclick="startgame()" >Start</button>
+            <button  id="botao-start" onclick="abrirPopup()"  >Regras</button>
+    </div>
       </div>
+      <div id="popup-regras" class="popup">
+        <div class="popup-conteudo">
+            <h2>Regras do Jogo</h2>
+            <ul>
+                <li>🟩 Use as setas do teclado para mover a cobra.</li>
+                <li>🍎 Coma as maçãs para ganhar pontos.</li>
+                <li>☠️ Evite bater nas paredes ou no próprio corpo.</li>
+                <li>🏁 O jogo termina se a cobra colidir!</li>
+            </ul>
+            <button onclick="fecharPopup()">Fechar</button>
+        </div>
+    </div>
     <div class="pontuacao" >  
         <div class="pontaucaoAtual"> <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" id="pontoJogador" >0</p>
         </div>

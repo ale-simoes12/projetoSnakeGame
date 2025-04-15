@@ -26,7 +26,7 @@ melhorScore.innerText = ""+melhorpontuacao;
 localStorage.setItem('melhorPonto', melhorpontuacao);
 
 function desenharCobra() {
-    ctx.fillStyle = "red";
+    // ctx.fillStyle = corAleatoria();
     let tamanhoCobra = listaPosicoes.length;
     const ultimoElemento = listaPosicoes[tamanhoCobra - 1]
     let novox = ultimoElemento.x + horizontal;
@@ -40,12 +40,17 @@ function desenharCobra() {
 
     let tam = listaPosicoes.length;
     for (let i = 0; i < tam; i++) {
+        ctx.fillStyle = corAleatoria();
         if (i == tam - 1) {
             ctx.fillStyle = "blue";
         }
         ctx.fillRect(listaPosicoes[i].x, listaPosicoes[i].y, tamanho-2, tamanho-2);
     }
 
+}
+
+function corAleatoria() {
+    return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
 }
 
 function gerarAleatorio(min, max) {
@@ -119,8 +124,17 @@ function verificarDerrotaCorpo(){
 }
 
 function  velocit(valor){
-    console.log("entrou velo");
     velocidade = valor;
+    document.querySelectorAll('.botoesVelocidade button').forEach((btn) => {
+        btn.addEventListener('click', function () {
+            const vel = parseFloat(btn.textContent);
+            document.querySelectorAll('.botoesVelocidade button').forEach(b => b.classList.remove('ativo'));
+            btn.classList.add('ativo');
+        });
+    });
+   
+   
+   
 }
 
 document.addEventListener("keydown", function (event) {
@@ -184,6 +198,14 @@ function restart(){
     gerarCordenada();
     gameLoop();
 
+}
+
+function abrirPopup() {
+    document.getElementById('popup-regras').style.display = 'flex';
+}
+
+function fecharPopup() {
+    document.getElementById('popup-regras').style.display = 'none';
 }
 
 gerarCordenada();
