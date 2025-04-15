@@ -3,7 +3,6 @@ const derrota = document.getElementById("losescreean");
 let pontosjogador = document.getElementById("pontoJogador");
 let melhorScore = document.getElementById("melhorPontuacao");
 let pontoJogadorAtual  = document.getElementById("pontoJogadorAtual");
-
 const ctx = canvas.getContext("2d");
 const tamanho = 40;
 let listaPosicoes = [{ x: 400, y: 400 }];
@@ -21,13 +20,10 @@ let velocidade =1;
 let melhorpontuacao =  localStorage.getItem("melhorPonto");
 if (melhorpontuacao == null) {
     melhorpontuacao = 0;
-
 }
 
 melhorScore.innerText = ""+melhorpontuacao;
-
 localStorage.setItem('melhorPonto', melhorpontuacao);
-
 
 function desenharCobra() {
     ctx.fillStyle = "red";
@@ -52,16 +48,13 @@ function desenharCobra() {
 
 }
 
-
 function gerarAleatorio(min, max) {
     return Math.round(Math.random() * (max - min) + min)
 }
 
-
 function gerarPosicao() {
-    return Math.round(gerarAleatorio(0, 800) / 40) * 40;
+    return Math.round(gerarAleatorio(0, 760) / 40) * 40;
 }
-
 
 function gerarCordenada() {
     let coordenadaValida = false;
@@ -87,7 +80,6 @@ function desenhaComida() {
     ctx.fillRect(xComida, yComida, tamanho, tamanho);
 }
 
-
 function verificaComeu() {
     let tamanhoCobra = listaPosicoes.length;
     const ultimoElemento = listaPosicoes[tamanhoCobra - 1]
@@ -101,8 +93,6 @@ function verificaComeu() {
     }
 }
 
-
-
 function verificarDerrotaCampo(){
     let tamanhoCobra = listaPosicoes.length;
     const ultimoElemento = listaPosicoes[tamanhoCobra - 1];
@@ -115,7 +105,6 @@ function verificarDerrotaCampo(){
     }
       
 }
-
 
 function verificarDerrotaCorpo(){
     let tamanhoCorpo = listaPosicoes.length-1;
@@ -133,6 +122,7 @@ function  velocit(valor){
     console.log("entrou velo");
     velocidade = valor;
 }
+
 document.addEventListener("keydown", function (event) {
 
     if (event.key == "ArrowDown" && ultimaTecla != "ArrowUp") {
@@ -166,6 +156,35 @@ document.addEventListener("keydown", function (event) {
 
 });
 
+function telaDerrota(){
+    derrota.style.display = "block";
+}
+
+function startgame(){
+    const startgame =  document.getElementById("tela-inicial");
+    startgame.style.display = "none";
+
+}
+
+function restart(){
+    ctx.clearRect(0, 0, 800, 800);
+    derrota.style.display = "none";
+    perdeu = false;
+    listaPosicoes = [{ x: 400, y: 400 }];
+    ultimaTecla = "";
+    horizontal = 0;
+    vertical = 0;
+    comeu = false;
+    xComida;
+    yComida;
+    loopId;
+    perdeu = false;
+    pontos = 0;
+    pontosjogador.innerText = ""+0;
+    gerarCordenada();
+    gameLoop();
+
+}
 
 gerarCordenada();
 function gameLoop() {
@@ -191,36 +210,4 @@ function gameLoop() {
     }, 300*velocidade)
 
 }
-function telaDerrota(){
-    derrota.style.display = "block";
-}
-
-
-function startgame(){
-    const startgame =  document.getElementById("tela-inicial");
-    startgame.style.display = "none";
-
-}
-
-function restart(){
-    ctx.clearRect(0, 0, 800, 800);
-    derrota.style.display = "none";
-    perdeu = false;
-    listaPosicoes = [{ x: 400, y: 400 }];
-    // ctx.fillRect(listaPosicoes[0].x, listaPosicoes[0].y, tamanho, tamanho);
-    ultimaTecla = "";
-    horizontal = 0;
-    vertical = 0;
-    comeu = false;
-    xComida;
-    yComida;
-    loopId;
-    perdeu = false;
-    pontos = 0;
-    pontosjogador.innerText = ""+0;
-    gerarCordenada();
-    gameLoop();
-
-}
-
 gameLoop();
