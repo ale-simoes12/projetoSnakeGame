@@ -39,10 +39,9 @@ canvas {
     border-radius: 16px; 
     box-shadow: 0 0 20px #00ffcc; 
     display: block; 
-    margin: 40px auto; 
-    width: 80%;
-    max-width: 800px;
-    height: auto;
+    margin-top: 1em;
+    width: auto;
+    height: 70vh;
 }
 
 .telaDerrota {
