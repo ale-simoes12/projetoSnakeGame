@@ -99,28 +99,13 @@ function gerarCordenada() {
 function desenhaComida() {
   const imagemComida = new Image();
   imagemComida.src = 'imagens/headCreaper.png';
-  ctx.fillStyle = "yellow";
-if (imagemComida.complete) {
-    ctx.drawImage(imagemComida, xComida, yComida, tamanho, tamanho);
-  } else {
-    imagemComida.onload = function () {
-      ctx.drawImage(imagemComida, xComida, yComida, tamanho, tamanho);
-    };
-  }
-
+  ctx.drawImage(imagemComida, xComida, yComida, tamanho, tamanho);
 }
 
 function desenharExplosao(xComida,yComida,tamanho,tamanho){
     const imagemExplosao = new Image()
     imagemExplosao.src = 'imagens/explosao.png';
-    if (imagemExplosao.complete) {
-        ctx.drawImage(imagemExplosao, xComida, yComida, tamanho, tamanho);
-      } else {
-        imagemExplosao.onload = function () {
-          ctx.drawImage(imagemExplosao, xComida, yComida, tamanho, tamanho);
-        };
-      }
-
+    ctx.drawImage(imagemExplosao, xComida, yComida, tamanho, tamanho);
 }
 
 function verificaComeu() {
