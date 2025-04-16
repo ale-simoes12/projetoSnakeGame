@@ -23,6 +23,7 @@ let melhorpontuacao = localStorage.getItem("melhorPonto");
 let comecar = false;
 let explosao = false;
 const audio = new Audio('audio/creeper-explosion.mp3');
+let ultimoBtnAtivo = "";
 
 function verificaLocalStore(){
     if (melhorpontuacao == null) {
@@ -99,7 +100,6 @@ function desenhaComida() {
   const imagemComida = new Image();
   imagemComida.src = 'imagens/headCreaper.png';
   ctx.fillStyle = "yellow";
-//   ctx.fillRect(xComida, yComida, tamanho, tamanho);
 if (imagemComida.complete) {
     ctx.drawImage(imagemComida, xComida, yComida, tamanho, tamanho);
   } else {
@@ -164,17 +164,16 @@ function verificarDerrotaCorpo() {
   }
 }
 
-function velocit(valor) {
+function velocit(valor,id) {
   velocidade = valor;
-  document.querySelectorAll(".botoesVelocidade button").forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const vel = parseFloat(btn.textContent);
-      document
-        .querySelectorAll(".botoesVelocidade button")
-        .forEach((b) => b.classList.remove("ativo"));
-      btn.classList.add("ativo");
-    });
-  });
+  const idbtn =  document.getElementById(id);
+  if(ultimoBtnAtivo != ""){
+    const idbtnanterior =  document.getElementById(ultimoBtnAtivo);
+    idbtnanterior.classList.toggle('ativo');
+  }
+  idbtn.classList.toggle('ativo');
+  ultimoBtnAtivo = id;
+  
 }
 
 document.addEventListener("keydown", function (event) {
