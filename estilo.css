@@ -51,7 +51,6 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(220, 20, 60, 0.9);
-    /* tom de vermelho forte com transparência */
     padding: 3em;
     border-radius: 20px;
     box-shadow: 0 0 25px rgba(255, 0, 100, 0.7);
@@ -213,19 +212,6 @@ canvas {
 #botao-start:active {
     transform: translateY(0);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-}
-
-#botao-start::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.1);
-    transform: rotate(45deg);
-    pointer-events: none;
-    transition: all 0.5s ease;
 }
 
 #botao-start:hover::before {
