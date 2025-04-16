@@ -94,6 +94,11 @@ canvas {
     margin-bottom: 20px;
 }
 
+.botao{
+    display: flex;
+    gap: 1em;
+}
+
 .botao .reniciar {
     background-color: #ff4081;
     border: none;

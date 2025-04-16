@@ -24,12 +24,12 @@ let comecar = false;
 let explosao = false;
 let ultimoBtnAtivo = "";
 
-function verificaLocalStore(){
-    if (melhorpontuacao == null) {
-        melhorpontuacao = 0;
-    }
-    melhorScore.innerText = "" + melhorpontuacao;
-    localStorage.setItem("melhorPonto", melhorpontuacao);
+function verificaLocalStore() {
+  if (melhorpontuacao == null) {
+    melhorpontuacao = 0;
+  }
+  melhorScore.innerText = "" + melhorpontuacao;
+  localStorage.setItem("melhorPonto", melhorpontuacao);
 }
 
 function desenharCobra() {
@@ -101,15 +101,15 @@ function desenhaComida() {
   ctx.drawImage(imagemComida, xComida, yComida, tamanho, tamanho);
 }
 
-function desenharExplosao(xComida,yComida,tamanho,tamanho){
-    const imagemExplosao = new Image()
-    imagemExplosao.src = 'imagens/explosao.png';
-    ctx.drawImage(imagemExplosao, xComida, yComida, tamanho, tamanho);
+function desenharExplosao(xComida, yComida, tamanho, tamanho) {
+  const imagemExplosao = new Image()
+  imagemExplosao.src = 'imagens/explosao.png';
+  ctx.drawImage(imagemExplosao, xComida, yComida, tamanho, tamanho);
 }
 
 function verificaComeu() {
   let tamanhoCobra = listaPosicoes.length;
-  const ultimoElemento = listaPosicoes[tamanhoCobra - 1];  
+  const ultimoElemento = listaPosicoes[tamanhoCobra - 1];
   if (ultimoElemento.x == xComida && ultimoElemento.y == yComida) {
     const audio = new Audio('audio/creeper-explosion.mp3');
     xExplosao = xComida;
@@ -118,7 +118,7 @@ function verificaComeu() {
     gerarCordenada();
     pontos += 1;
     pontosjogador.innerText = "" + pontos;
-    explosao =true;
+    explosao = true;
     comeu = true;
   }
 }
@@ -148,16 +148,16 @@ function verificarDerrotaCorpo() {
   }
 }
 
-function velocit(valor,id) {
+function velocit(valor, id) {
   velocidade = valor;
-  const idbtn =  document.getElementById(id);
-  if(ultimoBtnAtivo != ""){
-    const idbtnanterior =  document.getElementById(ultimoBtnAtivo);
+  const idbtn = document.getElementById(id);
+  if (ultimoBtnAtivo != "") {
+    const idbtnanterior = document.getElementById(ultimoBtnAtivo);
     idbtnanterior.classList.toggle('ativo');
   }
   idbtn.classList.toggle('ativo');
   ultimoBtnAtivo = id;
-  
+
 }
 
 function restart() {
@@ -179,6 +179,13 @@ function restart() {
   gameLoop();
 }
 
+function voltarMenu() {
+  const startgame = document.getElementById("tela-inicial");
+  startgame.style.display = "flex";
+  comecar = false;
+  restart();
+}
+
 function telaDerrota() {
   derrota.style.display = "block";
 }
@@ -187,7 +194,6 @@ function startgame() {
   const startgame = document.getElementById("tela-inicial");
   startgame.style.display = "none";
   comecar = true;
-
 }
 
 function abrirPopup() {
@@ -216,12 +222,12 @@ function gameLoop() {
   desenhaComida();
   verificarDerrotaCorpo();
   verificarDerrotaCampo();
-  if(explosao){
-    desenharExplosao(xExplosao,yExplosao,tamanho,tamanho)
+  if (explosao) {
+    desenharExplosao(xExplosao, yExplosao, tamanho, tamanho)
     setTimeout(() => {
-        explosao = false;
-      },600 );
-    
+      explosao = false;
+    }, 600);
+
   }
   loopId = setTimeout(() => {
     gameLoop();
@@ -230,11 +236,11 @@ function gameLoop() {
 
 document.addEventListener("keydown", function (event) {
 
-  if(mudarDirecao == false || comecar ==false){
+  if (mudarDirecao == false || comecar == false) {
     return;
   }
 
-  if (event.key == "ArrowDown" && ultimaTecla != "ArrowUp" ) {
+  if (event.key == "ArrowDown" && ultimaTecla != "ArrowUp") {
     ultimaTecla = "ArrowDown";
     horizontal = 0;
     vertical = tamanho;
