@@ -110,7 +110,6 @@ if (imagemComida.complete) {
 
 }
 
-
 function desenharExplosao(xComida,yComida,tamanho,tamanho){
     const imagemExplosao = new Image()
     imagemExplosao.src = 'imagens/explosao.png';
@@ -176,6 +175,74 @@ function velocit(valor,id) {
   
 }
 
+function restart() {
+  ctx.clearRect(0, 0, 800, 800);
+  derrota.style.display = "none";
+  perdeu = false;
+  listaPosicoes = [{ x: 400, y: 400 }];
+  ultimaTecla = "";
+  horizontal = 0;
+  vertical = 0;
+  comeu = false;
+  xComida;
+  yComida;
+  loopId;
+  perdeu = false;
+  pontos = 0;
+  pontosjogador.innerText = "" + 0;
+  gerarCordenada();
+  gameLoop();
+}
+
+function telaDerrota() {
+  derrota.style.display = "block";
+}
+
+function startgame() {
+  const startgame = document.getElementById("tela-inicial");
+  startgame.style.display = "none";
+  comecar = true;
+
+}
+
+function abrirPopup() {
+  document.getElementById("popup-regras").style.display = "flex";
+}
+
+function fecharPopup() {
+  document.getElementById("popup-regras").style.display = "none";
+}
+
+function gameLoop() {
+  if (perdeu == true) {
+    if (pontos > melhorpontuacao) {
+      melhorpontuacao = pontos;
+      localStorage.setItem("melhorPonto", melhorpontuacao);
+      melhorScore.innerText = "" + melhorpontuacao;
+    }
+    pontoJogadorAtual.innerText = "" + pontos;
+    telaDerrota();
+    return;
+  }
+
+  ctx.clearRect(0, 0, 800, 800);
+  verificaComeu();
+  desenharCobra();
+  desenhaComida();
+  verificarDerrotaCorpo();
+  verificarDerrotaCampo();
+  if(explosao){
+    desenharExplosao(xExplosao,yExplosao,tamanho,tamanho)
+    setTimeout(() => {
+        explosao = false;
+      },600 );
+    
+  }
+  loopId = setTimeout(() => {
+    gameLoop();
+  }, 300 * velocidade);
+}
+
 document.addEventListener("keydown", function (event) {
 
   if(mudarDirecao == false || comecar ==false){
@@ -211,73 +278,6 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-function telaDerrota() {
-  derrota.style.display = "block";
-}
-
-function startgame() {
-  const startgame = document.getElementById("tela-inicial");
-  startgame.style.display = "none";
-  comecar = true;
-
-}
-
-function restart() {
-  ctx.clearRect(0, 0, 800, 800);
-  derrota.style.display = "none";
-  perdeu = false;
-  listaPosicoes = [{ x: 400, y: 400 }];
-  ultimaTecla = "";
-  horizontal = 0;
-  vertical = 0;
-  comeu = false;
-  xComida;
-  yComida;
-  loopId;
-  perdeu = false;
-  pontos = 0;
-  pontosjogador.innerText = "" + 0;
-  gerarCordenada();
-  gameLoop();
-}
-
-function abrirPopup() {
-  document.getElementById("popup-regras").style.display = "flex";
-}
-
-function fecharPopup() {
-  document.getElementById("popup-regras").style.display = "none";
-}
-
 gerarCordenada();
 verificaLocalStore();
-function gameLoop() {
-  if (perdeu == true) {
-    if (pontos > melhorpontuacao) {
-      melhorpontuacao = pontos;
-      localStorage.setItem("melhorPonto", melhorpontuacao);
-      melhorScore.innerText = "" + melhorpontuacao;
-    }
-    pontoJogadorAtual.innerText = "" + pontos;
-    telaDerrota();
-    return;
-  }
-
-  ctx.clearRect(0, 0, 800, 800);
-  verificaComeu();
-  desenharCobra();
-  desenhaComida();
-  verificarDerrotaCorpo();
-  verificarDerrotaCampo();
-  if(explosao){
-    desenharExplosao(xExplosao,yExplosao,tamanho,tamanho)
-    setTimeout(() => {
-        explosao = false;
-      },600 );
-    
-  }
-  loopId = setTimeout(() => {
-    gameLoop();
-  }, 300 * velocidade);
-}
 gameLoop();

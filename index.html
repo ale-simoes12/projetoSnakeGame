@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
-   
-    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="estilo.css" />
+
     <title>Snake Game</title>
 </head>
-<body>
 
- 
+<body>
     <div id="tela-inicial">
         <h1>Bem-vindo ao Jogo!</h1>
-        <img src="imagens/imagemCobra.png" alt="Cobra pintada" id="imagem-cobra">
+        <img src="imagens/imagemCobra.png" alt="Cobra pintada" id="imagem-cobra" />
         <div class="botoes-start">
-            <button  id="botao-start"  onclick="startgame()" >Start</button>
-            <button  id="botao-start" onclick="abrirPopup()"  >Regras</button>
+            <button id="botao-start" onclick="startgame()">Start</button>
+            <button id="botao-start" onclick="abrirPopup()">Regras</button>
+        </div>
     </div>
-      </div>
-      <div id="popup-regras" class="popup">
+    <div id="popup-regras" class="popup">
         <div class="popup-conteudo">
             <h2>Regras do Jogo</h2>
             <ul>
@@ -32,25 +31,35 @@
             <button onclick="fecharPopup()">Fechar</button>
         </div>
     </div>
-    <div class="pontuacao" >  
-        <div class="pontaucaoAtual"> <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" id="pontoJogador" >0</p>
+    <div class="pontuacao">
+        <div class="pontaucaoAtual">
+            <p class="textopontuacoa">Score:</p>
+            <p class="textopontuacoa" id="pontoJogador">0</p>
         </div>
-        <div class="pontaucaoAtual"> <p class="textopontuacoa" >Best Score:</p><p class="textopontuacoa" id="melhorPontuacao" >0</p>
+        <div class="pontaucaoAtual">
+            <p class="textopontuacoa">Best Score:</p>
+            <p class="textopontuacoa" id="melhorPontuacao">0</p>
         </div>
-
-
     </div>
-    <div class="telaDerrota" id="losescreean" >
+    <div class="telaDerrota" id="losescreean">
         <p class="mensagemderrota">Voce Perdeu!</p>
-        <div class="pontuacaoteladerrota" > <p class="textopontuacoa" >Score:</p><p class="textopontuacoa" id="pontoJogadorAtual" >0</p></div>
-        <div class="botao"><button class="reniciar" onclick="restart()"><p>Reniar Jogo</p> </button></div>
+        <div class="pontuacaoteladerrota">
+            <p class="textopontuacoa">Score:</p>
+            <p class="textopontuacoa" id="pontoJogadorAtual">0</p>
+        </div>
+        <div class="botao">
+            <button class="reniciar" onclick="restart()">
+                <p>Reiniciar Jogo</p>
+            </button>
+        </div>
     </div>
     <canvas id="canvasJogo" width="800" height="800"></canvas>
     <div class="botoesVelocidade">
-        <button  id="botao0.5x" onclick="velocit(2,'botao0.5x')" >0.5x</button>
-        <button  id="botao1x" onclick="velocit(1, 'botao1x' )">1x</button>
-        <button id="botao2x"  onclick="velocit(0.5,'botao2x')">2x</button>
+        <button id="botao0.5x" onclick="velocit(2,'botao0.5x')">0.5x</button>
+        <button id="botao1x" onclick="velocit(1, 'botao1x' )">1x</button>
+        <button id="botao2x" onclick="velocit(0.5,'botao2x')">2x</button>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -84,6 +84,7 @@ canvas {
 .pontuacaoteladerrota {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1em;
     font-size: 24px;
     background-color: #111;
