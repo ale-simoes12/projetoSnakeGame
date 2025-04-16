@@ -22,7 +22,6 @@ let mudarDirecao = true;
 let melhorpontuacao = localStorage.getItem("melhorPonto");
 let comecar = false;
 let explosao = false;
-const audio = new Audio('audio/creeper-explosion.mp3');
 let ultimoBtnAtivo = "";
 
 function verificaLocalStore(){
@@ -112,6 +111,7 @@ function verificaComeu() {
   let tamanhoCobra = listaPosicoes.length;
   const ultimoElemento = listaPosicoes[tamanhoCobra - 1];  
   if (ultimoElemento.x == xComida && ultimoElemento.y == yComida) {
+    const audio = new Audio('audio/creeper-explosion.mp3');
     xExplosao = xComida;
     yExplosao = yComida;
     audio.play();

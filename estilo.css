@@ -128,6 +128,7 @@ canvas {
 
 .textopontuacoa {
     font-size: 2em;
+    text-align: center;
 }
 
 .botao {
@@ -188,6 +189,7 @@ canvas {
     border-radius: 50px;
     cursor: pointer;
     text-transform: uppercase;
+    font-family: 'ArcadeClassic', sans-serif;
     letter-spacing: 2px;
     position: relative;
     overflow: hidden;
@@ -295,7 +297,7 @@ canvas {
     color: white;
     padding: 2em;
     border-radius: 12px;
-    box-shadow: 0 0 20px lime;
+    box-shadow: 0 0 20px rgb(255, 0, 157);
     max-width: 500px;
     width: 90%;
     text-align: center;
@@ -315,8 +317,8 @@ canvas {
 .popup-conteudo button {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: lime;
-    color: black;
+    background-color: rgb(247, 56, 167);
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 6px;
     cursor: pointer;
